@@ -3,875 +3,969 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>다른 곳보다 싸게 내 집 마련 | 돌고래하우스</title>
-<meta name="description" content="건물 이름·가격 공개. 중개수수료 없음. 다른 곳과 비교하세요."/>
+<title>집을 살 수 없는 조건인 분에게 | 돌고래하우스 내집마련 컨설팅</title>
+<meta name="description" content="현금 부족, 기대출, 낮은 신용. 안 된다고 포기하셨나요? 가능한 구조부터 먼저 설계합니다. 상담·진행 전 과정 무료."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-
 :root{
-  --black:#0a0a0a;
+  /* 팔레트: 남색(주) + 노랑(액센트) + 빨강(경고) — 3색으로 통일 */
+  --navy:#0E1A3A;        /* 메인 다크 배경 (검정 대체) */
+  --navy-d:#08102A;      /* 더 어두운 남색 */
+  --navy-m:#162250;      /* 중간 남색 (카드 배경) */
   --white:#ffffff;
-  --red:#E8321A;
-  --red-lt:#fff3f0;
-  --red-bd:#ffc9bf;
-  --blue:#1A4FE8;
-  --blue-lt:#f0f4ff;
-  --yellow:#FFD600;
-  --gray:#f4f4f4;
-  --border:#e0e0e0;
-  --sub:#555;
-  --muted:#999;
-  --max:460px;
+  --red:#D93016;
+  --red-lt:#fff2ee;
+  --red-bd:#ffc4b5;
+  --yellow:#16DB6D;      /* 민트 초록 — 신뢰·안정 */
+  --gray:#F4F5F8;        /* 섹션 배경용 — 살짝 남빛 띠는 회색 */
+  --border:#DDE1EC;      /* 남빛 띠는 구분선 */
+  --text:#1A1F36;        /* 본문 텍스트 — 거의 검정, 남색 띰 */
+  --sub:#3A4260;         /* 보조 텍스트 — 충분히 어둡게 */
+  --muted:#6B7299;       /* 최소 텍스트 — 이전보다 훨씬 진하게 */
+  --blue-lt:#EEF2FF;
   --display:'Black Han Sans',sans-serif;
   --body:'Noto Sans KR',sans-serif;
+  --max:460px;
+  /* 하위 호환용 alias */
+  --black:var(--navy);
+  --blue:var(--navy);
 }
+body{font-family:var(--body);background:#0E1A3A;color:var(--text);-webkit-font-smoothing:antialiased;}
+.page{max-width:var(--max);margin:0 auto;background:var(--white);min-height:100vh;box-shadow:0 0 60px rgba(0,0,0,.5);}
 
-body{
-  font-family:var(--body);
-  background:#d8dbe2;
-  color:var(--black);
-  -webkit-font-smoothing:antialiased;
-}
-
-.page{
-  max-width:var(--max);
-  margin:0 auto;
-  background:var(--white);
-  min-height:100vh;
-}
-
-/* ── TOPBAR ── */
+/* ── TOP BAR ── */
 .topbar{
-  position:sticky;top:0;z-index:100;
-  background:var(--black);
-  padding:12px 20px;
+  position:sticky;top:0;z-index:200;
+  background:var(--navy-d);
+  padding:11px 18px;
   display:flex;align-items:center;justify-content:space-between;
+  gap:10px;
 }
-.logo{
-  font-family:var(--display);
-  font-size:16px;color:var(--white);
-  letter-spacing:-0.5px;
+.logo{font-family:var(--display);font-size:15px;color:#fff;letter-spacing:-.3px;}
+.logo em{color:var(--yellow);font-style:normal;}
+.topbar-btns{display:flex;gap:7px;}
+.tb-btn{
+  padding:7px 12px;border-radius:6px;
+  font-size:11px;font-weight:900;
+  text-decoration:none;white-space:nowrap;letter-spacing:-.2px;
 }
-.logo span{color:var(--yellow);}
-.topbar-btn{
-  padding:8px 14px;
-  background:var(--yellow);color:var(--black);
-  border-radius:6px;font-size:12px;font-weight:900;
-  text-decoration:none;white-space:nowrap;
-}
+.tb-btn.ghost{background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.18);}
+.tb-btn.solid{background:var(--yellow);color:#fff;}
 
 /* ── HERO ── */
-.hero{
-  background:var(--black);
-  padding:36px 24px 44px;
-  position:relative;
-  overflow:hidden;
+.hero-wrap{position:relative;width:100%;aspect-ratio:9/15;background:var(--navy-d);overflow:hidden;}
+.hero-img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-ph{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(155deg,#162250 0%,#08102A 100%);
 }
-.hero::before{
-  content:'';position:absolute;
-  top:-60px;right:-60px;
-  width:200px;height:200px;
-  background:var(--yellow);
-  border-radius:50%;opacity:.07;
+.hero-ph span{font-size:52px;}
+.hero-ph p{font-size:12px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:.5px;}
+.hero-ov{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:72px 22px 26px;
+  background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.65) 55%,transparent 100%);
 }
-
 .hero-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,214,0,.15);border:1px solid rgba(255,214,0,.4);
-  border-radius:4px;padding:5px 11px;
-  font-size:11px;font-weight:700;color:var(--yellow);
-  letter-spacing:.5px;margin-bottom:20px;
+  background:rgba(22,219,109,.15);border:1px solid rgba(22,219,109,.45);
+  border-radius:4px;padding:4px 10px;margin-bottom:14px;
+  font-size:10px;font-weight:700;color:var(--yellow);letter-spacing:.5px;
 }
-.pulse{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--yellow);
-  animation:blink 1.6s ease-in-out infinite;
+.pulse{width:5px;height:5px;border-radius:50%;background:var(--yellow);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.1}}
+.hero-ov h1{
+  font-family:var(--body);font-size:29px;font-weight:900;
+  line-height:1.42;letter-spacing:-.3px;color:#fff;margin-bottom:11px;
 }
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-
-.hero h1{
-  font-family:var(--body);
-  font-size:32px;line-height:1.45;
-  font-weight:900;
-  color:var(--white);
-  letter-spacing:-0.5px;
-  margin-bottom:14px;
-}
-.hero h1 .hl{
-  display:inline;
-  background:var(--yellow);
-  color:var(--black);
-  padding:2px 6px;
-  border-radius:4px;
-}
-.hero h1 .hl-red{
-  display:inline;
-  background:var(--red);
-  color:var(--white);
-  padding:2px 6px;
-  border-radius:4px;
-}
-
-.hero-sub{
-  font-size:14px;color:rgba(255,255,255,.65);
-  line-height:1.85;margin-bottom:28px;
-}
-.hero-sub b{color:var(--white);}
-
-/* 투명성 3칸 */
-.trans-grid{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:8px;margin-bottom:24px;
-}
-.trans-box{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:10px;
-  padding:14px 10px;text-align:center;
-}
-.trans-icon{font-size:20px;margin-bottom:6px;}
-.trans-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:4px;letter-spacing:.3px;}
-.trans-val{font-size:12px;font-weight:900;color:var(--yellow);line-height:1.35;}
-
+.hero-ov h1 .acc{color:var(--yellow);}
+.hero-ov h1 .acc-r{background:var(--red);color:#fff;padding:1px 7px;border-radius:4px;}
+.hero-sub{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.78;margin-bottom:18px;}
+.hero-sub b{color:#fff;text-shadow:none;}
 .hero-cta{
-  display:block;width:100%;padding:18px;
-  background:var(--yellow);color:var(--black);
-  border-radius:10px;font-family:var(--display);
-  font-size:18px;text-align:center;text-decoration:none;
-  letter-spacing:-0.5px;
+  display:block;width:100%;padding:15px;
+  background:var(--yellow);color:#fff;
+  border-radius:9px;font-size:15px;font-weight:900;
+  text-align:center;text-decoration:none;letter-spacing:-.3px;
   transition:transform .15s;
 }
 .hero-cta:active{transform:scale(.98);}
-.hero-note{
-  font-size:11px;color:rgba(255,255,255,.4);
-  text-align:center;margin-top:8px;
-}
+.hero-note{font-size:10px;color:rgba(255,255,255,.38);text-align:center;margin-top:7px;}
 
-/* ── COMPARE BAR ── */
-.compare-bar{
-  background:var(--red);
-  padding:14px 24px;
-  display:flex;align-items:center;gap:10px;
+/* ── INTRO ── */
+.intro{
+  padding:16px 18px;
+  background:#f8f9fc;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:13px;
 }
-.compare-icon{font-size:20px;flex:0 0 auto;}
-.compare-txt{font-size:13px;font-weight:900;color:var(--white);line-height:1.5;}
+.intro-icon{
+  width:50px;height:50px;flex:0 0 auto;border-radius:13px;
+  background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:26px;
+}
+.intro-name{font-size:14px;font-weight:900;margin-bottom:3px;color:var(--text);}
+.intro-role{font-size:11px;color:var(--sub);line-height:1.6;margin-bottom:7px;}
+.intro-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.itag{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;}
+.itag.b{background:var(--blue-lt);color:var(--navy);}
+.itag.y{background:#edf7f1;color:#1d6b41;}
+.itag.g{background:var(--gray);color:var(--sub);}
 
-/* ── SEC 공통 ── */
-.sec{padding:48px 24px;}
+/* ── 공통 섹션 ── */
+.sec{padding:46px 22px;}
 .sec+.sec{border-top:8px solid var(--gray);}
 .sec-gray{background:var(--gray);}
-.sec-black{background:var(--black);}
+.sec-black{background:var(--navy-d);}
 .sec-red{background:var(--red-lt);}
-.sec-blue{background:var(--blue);}
+.sec-navy{background:var(--navy-d);}
 
-.t-label{
-  display:inline-block;
-  font-size:10px;font-weight:700;
+.t-lbl{
+  display:inline-block;font-size:9px;font-weight:700;
   letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--blue);margin-bottom:10px;
+  color:var(--sub);margin-bottom:10px;
 }
-.t-label.r{color:var(--red);}
-.t-label.w{color:rgba(255,255,255,.45);}
-.t-label.y{color:var(--yellow);}
+.t-lbl.r{color:var(--red);}
+.t-lbl.w{color:rgba(255,255,255,.55);}
+.t-lbl.y{color:var(--yellow);}
 
-h2{
-  font-family:var(--body);
-  font-size:26px;font-weight:800;
-  line-height:1.45;
-  letter-spacing:-0.5px;margin-bottom:12px;
-}
-h3{font-size:15px;font-weight:900;line-height:1.4;margin-bottom:5px;}
-.body{font-size:14px;color:var(--sub);line-height:1.82;}
-.body b{color:var(--black);}
-.body.w{color:rgba(255,255,255,.7);}
+h2{font-family:var(--body);font-size:24px;font-weight:800;line-height:1.45;letter-spacing:-.3px;margin-bottom:11px;color:var(--text);}
+h3{font-size:14px;font-weight:900;line-height:1.42;margin-bottom:4px;color:var(--text);}
+.body{font-size:13.5px;color:var(--sub);line-height:1.92;}
+.body b{color:var(--text);}
+.body.w{color:rgba(255,255,255,.82);}
 .body.w b{color:#fff;}
-.c-r{color:var(--red);}
-.c-b{color:var(--blue);}
-.c-y{color:var(--yellow);}
-.c-w{color:#fff;}
 
-/* ── 페인포인트 – 숫자 폭탄 ── */
-.pain-nums{display:grid;gap:10px;margin-bottom:20px;}
-.pain-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 18px;
-  border:1.5px solid var(--red-bd);border-radius:12px;
-  background:#fff;
-}
-.pain-yr{font-size:13px;font-weight:700;color:var(--sub);}
-.pain-amt{
-  font-size:28px;font-weight:900;color:var(--red);
-  letter-spacing:-1px;line-height:1;
-}
-.pain-unit{font-size:11px;color:var(--muted);margin-top:2px;text-align:right;}
-
-.warn-box{
-  padding:14px 16px;
-  background:var(--red);border-radius:10px;
-  font-size:13px;font-weight:700;color:#fff;line-height:1.7;
-  margin-bottom:22px;
-}
-
-/* 체크 리스트 */
-.check-list{display:grid;gap:8px;margin-bottom:22px;}
-.check-item{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:13px 14px;
-  background:#fff;border:1px solid var(--border);border-radius:10px;
-  font-size:13px;line-height:1.65;
-}
-.chk{
-  width:22px;height:22px;flex:0 0 auto;
-  background:var(--red);color:#fff;
-  border-radius:6px;display:flex;align-items:center;
-  justify-content:center;font-size:10px;font-weight:900;margin-top:1px;
-}
-
-/* ── VS 비교표 ── */
-.vs-wrap{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);margin-top:24px;}
-.vs-header{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  background:var(--black);
-}
-.vs-head-cell{
-  padding:13px 10px;text-align:center;
-  font-size:12px;font-weight:900;color:rgba(255,255,255,.5);
-}
-.vs-head-cell.ours{color:var(--yellow);}
-.vs-row{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  border-top:1px solid var(--border);
-}
-.vs-row:nth-child(even){background:var(--gray);}
-.vs-cell{
-  padding:13px 10px;text-align:center;
-  font-size:12px;line-height:1.5;color:var(--sub);
-}
-.vs-cell.cat{font-weight:700;color:var(--black);text-align:left;padding-left:14px;}
-.vs-cell.ours{font-weight:900;color:var(--blue);}
-.vs-cell .no{color:var(--muted);}
-.vs-cell .yes{color:var(--blue);}
-
-/* ── 투명성 USP ── */
-.usp-items{display:grid;gap:10px;margin-top:24px;}
-.usp-item{
-  display:flex;align-items:flex-start;gap:14px;
-  padding:18px 16px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:13px;
-}
-.usp-num{
-  width:34px;height:34px;flex:0 0 auto;
-  background:var(--yellow);color:var(--black);
-  border-radius:8px;display:flex;align-items:center;
-  justify-content:center;font-family:var(--display);font-size:16px;
-}
-.usp-item h3{font-size:14px;color:#fff;margin-bottom:4px;}
-.usp-item p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;}
-
-.usp-punch{
-  margin-top:20px;padding:18px;
-  border-radius:12px;
-  background:var(--yellow);
-  font-family:var(--display);
-  font-size:18px;color:var(--black);
-  text-align:center;line-height:1.4;
-  letter-spacing:-0.5px;
-}
-
-/* ── 실제 사례 카드 ── */
-.case-items{display:grid;gap:12px;margin-top:24px;}
-.case-item{
-  border-radius:13px;overflow:hidden;
-  border:1.5px solid var(--border);
-  background:#fff;
-}
-.case-tag{
-  padding:8px 14px;
-  background:var(--blue-lt);
-  font-size:11px;font-weight:700;color:var(--blue);
-  letter-spacing:.3px;
-}
-.case-body{padding:16px 16px 18px;}
-.case-building{
-  font-family:var(--display);
-  font-size:18px;color:var(--black);margin-bottom:4px;
-}
-.case-price{
-  font-size:24px;font-weight:900;color:var(--red);
-  letter-spacing:-1px;margin-bottom:8px;
-}
-.case-price span{font-size:13px;font-weight:400;color:var(--muted);}
-.case-desc{font-size:13px;color:var(--sub);line-height:1.7;}
-.case-diff{
-  display:inline-block;
-  margin-top:10px;padding:5px 10px;
-  background:var(--red);border-radius:6px;
-  font-size:11px;font-weight:900;color:#fff;
-}
-
-/* ── 후기 ── */
-.review-items{display:grid;gap:12px;}
-.review-item{
-  padding:20px 18px;
-  background:#fff;border:1px solid var(--border);
-  border-radius:13px;position:relative;
-}
-.rev-q{
-  font-size:56px;line-height:1;font-weight:900;
-  color:#dde5f7;position:absolute;top:8px;left:14px;
-}
-.rev-txt{
-  font-size:14px;color:var(--black);
-  line-height:1.8;position:relative;padding-top:10px;
-}
-.rev-who{
-  margin-top:11px;
-  font-size:12px;color:var(--muted);font-weight:700;
-  display:flex;align-items:center;gap:7px;
-}
-.rev-who::before{content:'';width:14px;height:2px;background:var(--blue);}
-
-/* ── FAQ ── */
-.faq-list{display:grid;gap:8px;}
-details{
-  background:#fff;border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;
-}
-details[open]{border-color:var(--blue);}
-summary{
-  padding:16px 16px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-  font-size:14px;font-weight:900;line-height:1.45;
-  cursor:pointer;list-style:none;
-}
-summary::-webkit-details-marker{display:none;}
-.fq-arr{font-size:12px;color:var(--blue);flex:0 0 auto;margin-top:2px;transition:transform .2s;}
-details[open] .fq-arr{transform:rotate(180deg);}
-.fq-body{
-  padding:13px 16px 16px;
-  border-top:1px solid var(--border);
-  font-size:14px;color:var(--sub);line-height:1.8;
-}
-.fq-body b{color:var(--black);}
-
-/* ── FINAL CTA ── */
-.final{
-  padding:52px 24px;
-  background:var(--black);
-}
-.final h2{color:#fff;font-family:var(--display);}
-.final-body{
-  font-size:14px;color:rgba(255,255,255,.7);
-  line-height:1.85;margin-bottom:24px;
-}
-.final-body b{color:#fff;}
-.final-btn{
-  display:block;width:100%;padding:20px;
-  border-radius:12px;background:var(--yellow);color:var(--black);
-  font-family:var(--display);font-size:20px;
-  text-align:center;text-decoration:none;
-  letter-spacing:-0.5px;
-  transition:transform .15s;
-}
-.final-btn:active{transform:scale(.98);}
-.final-micro{
-  display:flex;justify-content:center;flex-wrap:wrap;gap:12px;
-  margin-top:14px;
-  font-size:11px;color:rgba(255,255,255,.45);
-}
-.final-micro span{display:flex;align-items:center;gap:5px;}
-.fm-dot{width:3px;height:3px;background:rgba(255,255,255,.3);border-radius:50%;}
-.final-disclaimer{
-  margin-top:18px;padding:13px 15px;
-  background:rgba(255,255,255,.06);border-radius:10px;
-  font-size:11px;color:rgba(255,255,255,.35);line-height:1.7;
-}
-
-/* ── BUTTONS ── */
+/* 버튼 */
 .btn{
-  display:block;width:100%;padding:17px 20px;
-  border-radius:10px;border:none;
-  font-family:var(--body);font-size:15px;font-weight:900;
-  text-align:center;text-decoration:none;cursor:pointer;
-  letter-spacing:-.3px;transition:transform .15s;
+  display:block;width:100%;padding:15px 18px;
+  border-radius:10px;font-size:14px;font-weight:900;
+  text-align:center;text-decoration:none;letter-spacing:-.3px;
+  transition:transform .15s;border:none;cursor:pointer;
 }
 .btn:active{transform:scale(.985);}
 .btn-black{background:var(--black);color:#fff;}
-.btn-blue{background:var(--blue);color:#fff;}
-.btn-red{background:var(--red);color:#fff;}
-.btn-note{font-size:11px;color:var(--muted);text-align:center;margin-top:8px;}
+.btn-blue{background:var(--navy);color:#fff;}
+.btn-yellow{background:var(--yellow);color:#fff;}
+.btn-outline{background:transparent;border:2px solid var(--yellow);color:var(--yellow);}
+.btn-note{font-size:11px;color:var(--sub);text-align:center;margin-top:8px;}
+.btn-note.w{color:rgba(255,255,255,.65);}
+
+/* ── 슬라이더 ── */
+.calc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:16px;}
+.calc-head{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:12px;letter-spacing:.3px;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:13px;}
+.calc-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px;}
+.calc-box.full{grid-column:span 2;border-color:rgba(22,219,109,.4);background:rgba(22,219,109,.06);}
+.cb-l{font-size:10px;color:rgba(255,255,255,.62);margin-bottom:3px;}
+.cb-v{font-size:20px;font-weight:900;color:#fff;letter-spacing:-.7px;}
+.calc-box.full .cb-v{color:var(--yellow);font-size:17px;}
+.sl-lbl{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.55);margin-bottom:6px;}
+.sl-lbl b{color:var(--yellow);}
+input[type=range]{
+  -webkit-appearance:none;width:100%;height:4px;border-radius:99px;outline:none;cursor:pointer;
+  background:linear-gradient(to right,var(--yellow) var(--pct,50%),rgba(255,255,255,.15) var(--pct,50%));
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--yellow);border:3px solid var(--navy);box-shadow:0 0 0 2px var(--yellow);cursor:pointer;
+}
+.calc-note{font-size:10px;color:rgba(255,255,255,.5);margin-top:7px;line-height:1.6;}
+
+/* ── 투명성 3칸 ── */
+.t3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:20px;}
+.t3-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:12px 8px;text-align:center;}
+.t3-icon{font-size:26px;margin-bottom:7px;}
+.t3-lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:3px;letter-spacing:.3px;}
+.t3-val{font-size:11px;font-weight:900;color:var(--yellow);line-height:1.35;}
+
+/* ── 페인포인트 숫자 ── */
+.pain-rows{display:grid;gap:9px;margin-bottom:18px;}
+.pain-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border:1.5px solid var(--red-bd);border-radius:11px;background:#fff;
+}
+.pain-yr{font-size:12px;font-weight:700;color:var(--text);}
+.pain-amt{font-size:26px;font-weight:900;color:var(--red);letter-spacing:-1px;line-height:1;}
+.pain-unit{font-size:10px;color:var(--sub);margin-top:2px;text-align:right;}
+.warn-box{padding:13px 15px;border-radius:9px;font-size:13px;font-weight:700;color:#fff;line-height:1.7;margin-bottom:20px;}
+
+/* ── 체크리스트 ── */
+.cklist{display:grid;gap:7px;margin-bottom:20px;}
+.ck-item{
+  display:flex;align-items:flex-start;gap:9px;
+  padding:12px 13px;background:#fff;border:1px solid var(--border);border-radius:9px;
+  font-size:13.5px;line-height:1.7;color:var(--sub);
+}
+.ck-item b{color:var(--black);}
+.ck{
+  font-size:18px;flex:0 0 auto;margin-top:0px;line-height:1;
+}
+.ck.r{}
+.ck.b{}
+
+/* ── VS 비교 ── */
+.vs{border-radius:13px;overflow:hidden;border:1.5px solid var(--border);}
+.vs-hd{display:grid;grid-template-columns:1.1fr 1fr 1.1fr;background:var(--navy);}
+.vs-hd-c{padding:12px 8px;text-align:center;font-size:11px;font-weight:900;color:rgba(255,255,255,.38);}
+.vs-hd-c.cat{text-align:left;padding-left:13px;}
+.vs-hd-c.ours{color:var(--yellow);}
+.vs-row{display:grid;grid-template-columns:1.1fr 1fr 1.1fr;border-top:1px solid var(--border);}
+.vs-row:nth-child(even){background:var(--gray);}
+.vs-c{padding:12px 8px;text-align:center;font-size:11px;line-height:1.5;color:var(--sub);}
+.vs-c.cat{font-weight:700;color:var(--black);text-align:left;padding-left:13px;font-size:12px;}
+.vs-c.ours{font-weight:900;color:var(--navy);font-size:12px;}
+.vs-c .no{color:#bbb;font-size:11px;}
+
+/* ── 전문성 카드 ── */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px;}
+.exp-box{
+  padding:16px 14px;border-radius:12px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+}
+.exp-icon{font-size:30px;margin-bottom:9px;}
+.exp-title{font-size:12px;font-weight:900;color:#fff;margin-bottom:5px;line-height:1.4;}
+.exp-desc{font-size:11px;color:rgba(255,255,255,.78);line-height:1.68;}
+.exp-box.accent{background:rgba(22,219,109,.1);border-color:rgba(22,219,109,.32);}
+.exp-box.accent .exp-title{color:var(--yellow);}
+.exp-box.accent .exp-desc{color:rgba(22,219,109,.85);}
+
+/* ── 프로세스 ── */
+.proc-items{display:grid;gap:0;}
+.proc-item{
+  display:flex;gap:0;align-items:stretch;
+  position:relative;
+}
+.proc-left{
+  display:flex;flex-direction:column;align-items:center;
+  width:50px;flex:0 0 auto;padding-top:4px;
+}
+.proc-num{
+  width:32px;height:32px;border-radius:10px;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:15px;flex:0 0 auto;
+  position:relative;z-index:1;
+}
+.proc-num.done{background:var(--navy-m);}
+.proc-line{
+  width:2px;flex:1;background:var(--border);margin:4px 0;
+  min-height:16px;
+}
+.proc-item:last-child .proc-line{display:none;}
+.proc-body{
+  flex:1;padding:2px 0 22px 4px;
+}
+.proc-body h3{font-size:13px;margin-bottom:4px;}
+.proc-body p{font-size:13px;color:var(--sub);line-height:1.72;}
+.proc-tag{
+  display:inline-block;margin-top:6px;
+  padding:3px 8px;border-radius:4px;
+  font-size:10px;font-weight:700;
+  background:var(--blue-lt);color:var(--blue);
+}
+
+/* ── 오해해소 ── */
+.mis-item{border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:9px;}
+.mis-q{
+  padding:14px 15px;background:#ffe5e0;border-bottom:1px solid var(--red-bd);
+  font-size:14.5px;font-weight:900;color:var(--red);line-height:1.45;
+}
+.mis-a{padding:13px 15px;background:#fff;font-size:13px;color:var(--sub);line-height:1.82;}
+.mis-a b{color:var(--black);}
+
+/* ── USP ── */
+.usp-items{display:grid;gap:9px;margin-top:18px;}
+.usp-item{
+  display:flex;align-items:flex-start;gap:13px;
+  padding:16px 14px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;
+}
+.usp-n{
+  width:34px;height:34px;flex:0 0 auto;border-radius:9px;
+  background:var(--yellow);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:16px;
+}
+.usp-item h3{font-size:13px;color:#fff;font-weight:900;margin-bottom:3px;}
+.usp-item p{font-size:12px;color:rgba(255,255,255,.78);line-height:1.7;}
+.usp-punch{
+  margin-top:18px;padding:16px;border-radius:11px;
+  background:var(--yellow);font-size:16px;font-weight:900;
+  color:#fff;text-align:center;line-height:1.45;
+}
+
+/* ── 실사례 ── */
+.case-items{display:grid;gap:12px;}
+.case-item{border-radius:13px;overflow:hidden;border:1.5px solid var(--border);background:#fff;}
+.case-tag{padding:7px 13px;background:var(--blue-lt);font-size:10px;font-weight:700;color:var(--navy);letter-spacing:.3px;}
+.case-photo{
+  background:#e5e8ee;border-bottom:1px solid var(--border);
+  height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;overflow:hidden;
+}
+.case-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.case-photo-lbl{font-size:11px;font-weight:700;color:#b2b6c0;letter-spacing:.5px;}
+.case-body{padding:14px 15px 17px;}
+.case-bldg{font-size:17px;font-weight:900;margin-bottom:3px;color:var(--text);}
+.case-price{font-size:22px;font-weight:900;color:var(--red);letter-spacing:-1px;margin-bottom:7px;}
+.case-price span{font-size:12px;font-weight:400;color:var(--muted);}
+.case-desc{font-size:13px;color:var(--sub);line-height:1.78;}
+.case-diff{
+  display:inline-block;margin-top:9px;
+  padding:4px 9px;border-radius:5px;
+  background:var(--red);font-size:10px;font-weight:900;color:#fff;
+}
+
+/* ── 후기 ── */
+.rev-items{display:grid;gap:11px;}
+.rev-item{
+  padding:18px 16px;background:#fff;
+  border:1px solid var(--border);border-radius:12px;position:relative;
+}
+.rev-q{
+  font-size:46px;line-height:1;font-weight:900;
+  color:#b0c0e8;position:absolute;top:7px;left:12px;
+}
+.rev-txt{font-size:13.5px;color:var(--text);line-height:1.86;position:relative;padding-top:8px;}
+.rev-who{
+  margin-top:10px;font-size:11px;color:var(--sub);font-weight:700;
+  display:flex;align-items:center;gap:6px;
+}
+.rev-who::before{content:'';width:12px;height:2px;background:var(--navy);}
+
+/* ── FAQ ── */
+.faq-list{display:grid;gap:7px;}
+details{background:#fff;border:1px solid var(--border);border-radius:11px;overflow:hidden;}
+details[open]{border-color:var(--navy);}
+summary{
+  padding:14px 15px;display:flex;align-items:flex-start;justify-content:space-between;gap:9px;
+  font-size:13.5px;font-weight:900;line-height:1.45;cursor:pointer;list-style:none;color:var(--text);
+}
+summary::-webkit-details-marker{display:none;}
+.fq-arr{font-size:13px;color:var(--navy);flex:0 0 auto;margin-top:1px;transition:transform .2s;}
+details[open] .fq-arr{transform:rotate(180deg);}
+.fq-body{padding:12px 15px 15px;border-top:1px solid var(--border);font-size:13.5px;color:var(--sub);line-height:1.85;}
+.fq-body b{color:var(--black);}
+
+/* ── FINAL CTA ── */
+.final{padding:50px 22px 44px;background:var(--black);}
+.final-headline{
+  font-family:var(--body);font-size:24px;font-weight:800;
+  line-height:1.48;letter-spacing:-.3px;color:#fff;margin-bottom:14px;
+}
+.final-headline em{color:var(--yellow);font-style:normal;}
+.final-body{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.92;margin-bottom:24px;}
+.final-body b{color:#fff;}
+.final-btn{
+  display:block;width:100%;padding:18px;border-radius:11px;
+  background:var(--yellow);color:#fff;
+  font-size:16px;font-weight:900;text-align:center;text-decoration:none;
+  letter-spacing:-.3px;transition:transform .15s;
+}
+.final-btn:active{transform:scale(.98);}
+.final-micro{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:10px;
+  margin-top:14px;font-size:10px;color:rgba(255,255,255,.6);
+}
+.final-micro span{display:flex;align-items:center;gap:4px;}
+.fm-dot{width:3px;height:3px;background:rgba(255,255,255,.2);border-radius:50%;}
+.final-disc{
+  margin-top:18px;padding:12px 14px;
+  background:rgba(255,255,255,.07);border-radius:9px;
+  font-size:10px;color:rgba(255,255,255,.5);line-height:1.72;
+}
 
 /* ── STICKY ── */
 .sticky{
-  position:fixed;bottom:0;left:50%;
-  transform:translateX(-50%);
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
   width:100%;max-width:var(--max);
-  background:#fff;border-top:2.5px solid var(--black);
-  padding:10px 20px 13px;
-  box-shadow:0 -4px 20px rgba(0,0,0,.12);
-  z-index:99;
+  background:#fff;border-top:2px solid var(--navy);
+  padding:10px 18px 13px;
+  box-shadow:0 -4px 20px rgba(0,0,0,.14);
+  z-index:199;
   transition:opacity .25s,transform .25s;
 }
-.sticky.hide{opacity:0;transform:translateX(-50%) translateY(6px);pointer-events:none;}
-.sticky-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.sticky-copy b{display:block;font-size:13px;font-weight:900;}
-.sticky-copy small{font-size:11px;color:var(--muted);}
+.sticky.hide{opacity:0;transform:translateX(-50%) translateY(8px);pointer-events:none;}
+.sticky-inner{display:flex;align-items:center;justify-content:space-between;gap:11px;}
+.sticky-copy b{display:block;font-size:12px;font-weight:900;color:var(--text);}
+.sticky-copy small{font-size:10px;color:var(--sub);}
 .sticky-link{
-  flex:0 0 auto;padding:11px 15px;
-  background:var(--black);color:#fff;
-  border-radius:9px;font-size:13px;font-weight:900;
-  text-decoration:none;white-space:nowrap;
+  flex:0 0 auto;padding:10px 14px;background:var(--navy);color:#fff;
+  border-radius:8px;font-size:12px;font-weight:900;text-decoration:none;white-space:nowrap;
 }
 
 /* ── FOOTER ── */
-.footer{
-  background:#111;padding:26px 24px 100px;
-  font-size:11px;color:rgba(255,255,255,.3);line-height:1.8;
-}
-.footer b{color:rgba(255,255,255,.5);}
+.footer{background:var(--navy-d);padding:26px 22px 110px;font-size:10px;color:rgba(255,255,255,.45);line-height:1.85;}
+.footer b{color:rgba(255,255,255,.7);}
 
-/* utils */
-.mt8{margin-top:8px;}
-.mt12{margin-top:12px;}
-.mt16{margin-top:16px;}
-.mt20{margin-top:20px;}
-.mt24{margin-top:24px;}
+/* ── utils ── */
+.mt8{margin-top:8px;}.mt12{margin-top:12px;}.mt16{margin-top:16px;}.mt20{margin-top:20px;}.mt24{margin-top:24px;}
 
-/* ── 슬라이더 계산기 ── */
-.calc{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-  border-radius:14px;padding:16px;margin-bottom:20px;
-}
-.calc-head{font-size:11px;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:12px;letter-spacing:.3px;}
-.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
-.calc-box{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:10px;padding:12px;
-}
-.calc-box.full{grid-column:span 2;border-color:rgba(255,214,0,.4);background:rgba(255,214,0,.08);}
-.cb-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:3px;}
-.cb-val{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.7px;}
-.calc-box.full .cb-val{color:var(--yellow);font-size:18px;}
-.sl-labels{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3);margin-bottom:6px;}
-.sl-labels b{color:var(--yellow);}
-input[type=range]{
-  -webkit-appearance:none;appearance:none;
-  width:100%;height:4px;border-radius:999px;outline:none;
-  background:linear-gradient(to right,var(--yellow) var(--pct,50%),rgba(255,255,255,.2) var(--pct,50%));
-  cursor:pointer;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:22px;height:22px;border-radius:50%;
-  background:var(--yellow);border:3px solid #000;
-  box-shadow:0 0 0 2px var(--yellow);cursor:pointer;
-}
-.calc-note{font-size:10px;color:rgba(255,255,255,.25);margin-top:8px;line-height:1.6;}
-
-/* ── 스크롤 리빌 ── */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease;}
+/* ── reveal ── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .48s ease,transform .48s ease;}
 .rv.on{opacity:1;transform:translateY(0);}
 .rv[data-d="1"]{transition-delay:.07s;}
-.rv[data-d="2"]{transition-delay:.14s;}
-.rv[data-d="3"]{transition-delay:.21s;}
+.rv[data-d="2"]{transition-delay:.15s;}
+.rv[data-d="3"]{transition-delay:.23s;}
+.rv[data-d="4"]{transition-delay:.31s;}
+
+/* ── 강조 배너 ── */
+.strip{
+  padding:13px 22px;
+  display:flex;align-items:center;gap:9px;
+}
+.strip-txt{font-size:12px;font-weight:900;line-height:1.5;}
 </style>
 </head>
 <body>
 <div class="page">
 
-<!-- ── TOPBAR ── -->
+<!-- ════════════════════════════
+  TOP BAR
+════════════════════════════ -->
 <div class="topbar">
-  <div class="logo">🐬 돌고래<span>하우스</span></div>
-  <a class="topbar-btn" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">무료 가능 여부 확인</a>
+  <div class="logo">🐬 돌고래<em>하우스</em></div>
+  <div class="topbar-btns">
+    <a class="tb-btn ghost" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">카카오 상담</a>
+    <a class="tb-btn solid" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">무료 확인</a>
+  </div>
 </div>
 
 
-<!-- ═══════════ ① HERO ═══════════ -->
-<section class="hero">
-
-  <div class="hero-badge rv">
-    <span class="pulse"></span>
-    월세 내는 분 전용 · 중개수수료 없음
+<!-- ════════════════════════════
+  ① HERO
+════════════════════════════ -->
+<div class="hero-wrap">
+  <!--
+    ★ 사진 교체:
+    아래 div.hero-ph 전체를 삭제하고
+    <img class="hero-img" src="파일명.jpg" alt="돌고래하우스"/> 로 교체
+  -->
+  <div class="hero-ph">
+    <span style="font-size:64px;">🏠</span>
+    <p>메인 사진 삽입</p>
   </div>
 
-  <h1 class="rv">
-    월세 내는 5년,<br/>
-    통장에서<br/>
-    <span class="hl-red">5천만원</span>이 사라집니다.
-  </h1>
+  <div class="hero-ov">
+    <div class="hero-badge"><span class="pulse"></span> 내집마련 컨설팅 · 상담·진행 전 과정 무료</div>
 
-  <p class="hero-sub rv">
-    그 돈은 자산이 되지 않습니다. 그냥 없어집니다.<br/>
-    <b>그런데 다른 부동산은 건물 이름조차 알려주지 않습니다.</b><br/>
-    광고비를 받기 때문입니다.<br/><br/>
-    저희는 <b>건물명·실거래가·수수료 전부 공개</b>합니다.<br/>
-    직접 비교해보시고 판단하세요.
-  </p>
+    <h1>
+      월세 내는 5년,<br/>
+      통장에서<br/>
+      <span class="acc-r">5천만원</span>이<br/>
+      사라집니다.
+    </h1>
 
-  <!-- 계산기 -->
-  <div class="calc rv">
-    <div class="calc-head">▸ 지금 내는 월세 기준으로 손실 계산</div>
-    <div class="calc-row">
+    <p class="hero-sub">
+      그 돈은 자산이 되지 않습니다. 그냥 없어집니다.<br/>
+      현금 부족, 기대출, 낮은 신용 — <b>그래도 됩니다.</b><br/>
+      저희는 집을 먼저 보여주지 않습니다.<br/>
+      <b>고객님 조건으로 가능한 구조부터 먼저 설계합니다.</b>
+    </p>
+
+    <a class="hero-cta" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
+      지금 조건으로 가능한지 무료 확인받기 →
+    </a>
+    <p class="hero-note">결정 아닙니다. 계산만 해드립니다.</p>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+  INTRO
+════════════════════════════ -->
+<div class="intro">
+  <div class="intro-icon">🐬</div>
+  <div>
+    <div class="intro-name">돌고래하우스 · 내집마련 컨설팅</div>
+    <div class="intro-role">부동산 매매·전세·월세·분양·토지·상가 전 분야 — 신축빌라 분양 전문<br/>건축주 업무협약 · 법무팀 연계 · 15년 이상 경력</div>
+    <div class="intro-tags">
+      <span class="itag b">건물명 실명 공개</span>
+      <span class="itag b">수수료 0원</span>
+      <span class="itag y">1금융 설계</span>
+      <span class="itag g">초기자금 0원 가능</span>
+      <span class="itag g">법무팀 동행</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+  ② 손실 계산기
+════════════════════════════ -->
+<section class="sec sec-black">
+
+  <div class="t-lbl y rv">LOSS CALCULATOR</div>
+  <h2 class="rv" style="color:#fff;">
+    지금 내는 월세,<br/>
+    5년이면 얼마나<br/>
+    <span style="color:var(--yellow);">사라지는지 계산해보세요.</span>
+  </h2>
+
+  <div class="calc rv mt16">
+    <div class="calc-head">▸ 슬라이더로 내 월세 기준 확인</div>
+    <div class="calc-grid">
       <div class="calc-box">
-        <div class="cb-lbl">현재 월세</div>
-        <div class="cb-val"><span id="rentD">80</span>만원</div>
+        <div class="cb-l">현재 월세</div>
+        <div class="cb-v"><span id="rentD">80</span>만원</div>
       </div>
       <div class="calc-box">
-        <div class="cb-lbl">1년 손실</div>
-        <div class="cb-val" style="color:var(--red)"><span id="yr1D">1,080</span>만</div>
+        <div class="cb-l">1년 손실</div>
+        <div class="cb-v" style="color:var(--red);"><span id="yr1D">1,080</span>만</div>
       </div>
       <div class="calc-box full">
-        <div class="cb-lbl">5년이면 이 돈이 그냥 사라집니다</div>
-        <div class="cb-val">→ <span id="yr5D">5,800</span>만원</div>
+        <div class="cb-l">5년이면 이 돈이 그냥 사라집니다</div>
+        <div class="cb-v">→ <span id="yr5D">5,800</span>만원</div>
       </div>
     </div>
-    <div class="sl-labels">
+    <div class="sl-lbl">
       <span>70만</span>
       <b><span id="slLbl">80</span>만원 기준</b>
       <span>120만</span>
     </div>
     <input type="range" id="sl" min="70" max="120" value="80"/>
-    <div class="calc-note">※ 관리비 10만 + 이사비 2회 포함 계산</div>
+    <div class="calc-note">※ 관리비 10만원 + 이사비 2회 포함 계산</div>
   </div>
 
-  <!-- 투명성 3칸 -->
-  <div class="trans-grid rv">
-    <div class="trans-box">
-      <div class="trans-icon">🏢</div>
-      <div class="trans-label">건물명</div>
-      <div class="trans-val">실명 공개</div>
+  <div class="t3 rv mt16">
+    <div class="t3-box">
+      <div class="t3-icon">🏢</div>
+      <div class="t3-lbl">건물명</div>
+      <div class="t3-val">실명 공개</div>
     </div>
-    <div class="trans-box">
-      <div class="trans-icon">💰</div>
-      <div class="trans-label">수수료</div>
-      <div class="trans-val">건축주 협약<br/>무료</div>
+    <div class="t3-box">
+      <div class="t3-icon">💰</div>
+      <div class="t3-lbl">수수료</div>
+      <div class="t3-val">건축주 협약<br/>무료</div>
     </div>
-    <div class="trans-box">
-      <div class="trans-icon">📋</div>
-      <div class="trans-label">가격</div>
-      <div class="trans-val">실거래가<br/>공개</div>
+    <div class="t3-box">
+      <div class="t3-icon">⚖️</div>
+      <div class="t3-lbl">법무</div>
+      <div class="t3-val">등기·권리<br/>사전 확인</div>
     </div>
   </div>
 
-  <!-- 사진 슬롯 -->
-  <div class="rv" style="margin-bottom:20px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div style="background:rgba(255,255,255,.07);border:1.5px dashed rgba(255,255,255,.2);border-radius:10px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
-        <span style="font-size:24px;">🏢</span>
-        <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.5px;">건물 사진 1</span>
-      </div>
-      <div style="background:rgba(255,255,255,.07);border:1.5px dashed rgba(255,255,255,.2);border-radius:10px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
-        <span style="font-size:24px;">🏢</span>
-        <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.5px;">건물 사진 2</span>
-      </div>
-    </div>
-    <p style="font-size:10px;color:rgba(255,255,255,.25);text-align:center;margin-top:6px;">실제 계약 가능 건물 사진</p>
-  </div>
-
-  <a class="hero-cta rv" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
-    내 상황으로 가능한지 무료 확인받기 →
+  <a class="btn btn-yellow rv" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
+    지금 조건으로 가능한지 무료 확인받기 →
   </a>
-  <p class="hero-note rv">결정 아닙니다. 계산만 해드립니다.</p>
+  <p class="btn-note rv" style="color:rgba(255,255,255,.65);">결정 아닙니다. 계산만 해드립니다.</p>
 
 </section>
 
 
-<!-- ── 비교 배너 ── -->
-<div class="compare-bar">
-  <div class="compare-icon">⚡</div>
-  <div class="compare-txt">저희보다 비싼 곳에서 계약하면 손해입니다 — 꼭 비교해보세요</div>
-</div>
-
-
-<!-- ═══════════ ② 페인포인트 ═══════════ -->
+<!-- ════════════════════════════
+  ③ 페인포인트
+════════════════════════════ -->
 <section class="sec sec-red">
 
-  <div class="t-label r rv">LOSS</div>
+  <div class="t-lbl r rv">REALITY</div>
   <h2 class="rv">
     지금 이 순간에도<br/>
-    월세는 <span class="c-r">사라지고</span> 있습니다.<br/>
-    자산으로 남지 않습니다.
+    월세는 <span class="c-r">사라지고</span> 있습니다.
   </h2>
+  <p class="body rv mt8">
+    전세·매매 자산으로 전환되지 않습니다.<br/>
+    통장에도 남지 않습니다. <b>그냥 없어집니다.</b>
+  </p>
 
-  <div class="pain-nums mt24">
+  <div class="pain-rows mt20">
     <div class="pain-row rv" data-d="1">
       <div class="pain-yr">1년</div>
-      <div>
-        <div class="pain-amt"><span id="p1D">1,080</span>만원</div>
-        <div class="pain-unit">월세 + 관리비</div>
-      </div>
+      <div><div class="pain-amt"><span id="p1D">1,080</span>만원</div><div class="pain-unit">월세 + 관리비</div></div>
     </div>
     <div class="pain-row rv" data-d="2">
       <div class="pain-yr">3년</div>
-      <div>
-        <div class="pain-amt"><span id="p3D">3,240</span>만원</div>
-        <div class="pain-unit">손실 누계</div>
-      </div>
+      <div><div class="pain-amt"><span id="p3D">3,240</span>만원</div><div class="pain-unit">손실 누계</div></div>
     </div>
     <div class="pain-row rv" data-d="3">
       <div class="pain-yr">5년</div>
-      <div>
-        <div class="pain-amt"><span id="p5D">5,800</span>만원</div>
-        <div class="pain-unit">이사비 포함</div>
-      </div>
+      <div><div class="pain-amt"><span id="p5D">5,800</span>만원</div><div class="pain-unit">이사비 포함</div></div>
     </div>
   </div>
 
-  <div class="warn-box rv">
-    이 돈은 전세·매매 자산으로 전환되지 않습니다.<br/>
-    통장에도 남지 않습니다. <b>그냥 사라집니다.</b>
+  <p class="body rv" style="font-weight:800;font-size:13px;margin-bottom:10px;">
+    이 중 하나라도 해당되신다면, 지금 이 페이지가 필요합니다.
+  </p>
+  <div class="cklist">
+    <div class="ck-item rv" data-d="1">
+      <div class="ck r">✅</div>
+      월세 내고 나면 통장에 남는 게 거의 없다
+    </div>
+    <div class="ck-item rv" data-d="2">
+      <div class="ck r">✅</div>
+      내 집 알아봤다가 <b>"현금이 없다"</b>는 이유로 포기한 적 있다
+    </div>
+    <div class="ck-item rv" data-d="3">
+      <div class="ck r">✅</div>
+      기대출·낮은 신용 때문에 <b>시작조차 안 해봤다</b>
+    </div>
+    <div class="ck-item rv">
+      <div class="ck r">✅</div>
+      가족의 주거를 책임져야 한다는 압박이 있다
+    </div>
   </div>
 
-  <p class="body rv" style="font-weight:700;margin-bottom:10px;">아래 중 하나라도 해당되신다면, 지금 이 페이지가 필요합니다</p>
-  <div class="check-list">
-    <div class="check-item rv" data-d="1">
-      <div class="chk">✓</div>
-      매달 월세 내고 나면 통장에 남는 게 거의 없다
-    </div>
-    <div class="check-item rv" data-d="2">
-      <div class="chk">✓</div>
-      내 집 알아봤다가 "현금이 없다"는 이유로 포기한 적 있다
-    </div>
-    <div class="check-item rv" data-d="3">
-      <div class="chk">✓</div>
-      대출 얘기만 나오면 복잡해서 그냥 포기했다
-    </div>
+  <div class="warn-box rv" style="background:var(--red);">
+    많은 분들이 <b>"나는 안 될 것 같다"</b>는 생각으로<br/>
+    시작조차 하지 않습니다.<br/>
+    저희가 가장 먼저 해드리는 건<br/>
+    <b>가능한지, 불가능한지 정확히 알려드리는 것</b>입니다.
   </div>
 
-  <a class="btn btn-black rv mt20" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
-    저도 '가능한지' 무료로 확인받기 →
+  <a class="btn btn-black rv" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
+    저도 가능한지 무료로 확인받기 →
   </a>
 
 </section>
 
 
-<!-- ═══════════ ③ VS 비교 (핵심 USP) ═══════════ -->
+<!-- ════════════════════════════
+  ④ 서비스 본질 — 역발상 포지셔닝
+════════════════════════════ -->
 <section class="sec">
 
-  <div class="t-label rv">WHY US</div>
+  <div class="t-lbl rv">OUR DIFFERENCE</div>
   <h2 class="rv">
-    다른 부동산과<br/>
-    <span class="c-b">직접 비교해보세요.</span>
+    다른 분양사는<br/>
+    <span class="c-r">집을 먼저 보여줍니다.</span>
   </h2>
+  <p class="body rv mt8">
+    조건이 되는 사람만 상대합니다.<br/>
+    현금이 있어야 하고, 신용이 깔끔해야 하고,<br/>
+    대출이 단순해야 합니다.<br/>
+    <b>그래야 빠르게 계약이 나오기 때문입니다.</b>
+  </p>
+
+  <!-- 분기점 -->
+  <div class="rv mt20" style="padding:20px;background:var(--navy);border-radius:14px;text-align:center;">
+    <div style="font-size:38px;margin-bottom:10px;">🔄</div>
+    <div style="font-family:var(--body);font-size:16px;font-weight:900;color:var(--yellow);line-height:1.5;letter-spacing:-.3px;">
+      저희는 반대로 합니다.
+    </div>
+    <div style="font-size:13px;color:rgba(255,255,255,.62);margin-top:8px;line-height:1.72;">
+      집을 먼저 보여주는 것이 아니라<br/>
+      <b style="color:#fff;">가능한 구조부터 먼저 만듭니다.</b>
+    </div>
+  </div>
+
+  <p class="body rv mt20">
+    현금이 부족하거나, 신용이 낮거나,<br/>
+    기대출이 많은 사람처럼<br/>
+    <b>일반 분양 시장에서 소외되는 분들을 기준으로</b><br/>
+    설계를 시작합니다.
+  </p>
+
   <p class="body rv mt12">
+    대부분의 분들은 집을 못 사는 이유가<br/>
+    집값 때문이라고 생각합니다.<br/>
+    하지만 실제로는 <b>초기 자금과 대출 구조 문제</b>입니다.<br/>
+    이 부분을 해결해드리는 것이 저희의 핵심입니다.
+  </p>
+
+  <div class="rv mt20" style="display:grid;gap:9px;">
+    <div class="ck-item" style="border-color:var(--blue);background:var(--blue-lt);">
+      <div class="ck b">👉</div>
+      <span style="color:var(--black);">현금이 거의 없는 분 → <b>전액대출·무입주 구조 설계</b></span>
+    </div>
+    <div class="ck-item" style="border-color:var(--blue);background:var(--blue-lt);">
+      <div class="ck b">👉</div>
+      <span style="color:var(--black);">신용 낮거나 기대출 많은 분 → <b>1금융 기준 재구조화</b></span>
+    </div>
+    <div class="ck-item" style="border-color:var(--blue);background:var(--blue-lt);">
+      <div class="ck b">👉</div>
+      <span style="color:var(--black);">생활자금이 필요한 분 → <b>생활자금 포함 통합 설계</b></span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════
+  ⑤ 전문성 — 부동산 전체 흐름
+════════════════════════════ -->
+<section class="sec sec-black">
+
+  <div class="t-lbl y rv">EXPERTISE</div>
+  <h2 class="rv c-w">
+    저희가 다른 이유는<br/>
+    <span style="color:var(--yellow);">"분양만 하는 곳"이<br/>아니기 때문입니다.</span>
+  </h2>
+  <p class="body w rv mt8">
+    저희는 <b style="color:#fff;">부동산 매매·전세·월세·분양·토지·상가</b> 전 분야를 다루는<br/>
+    정식 공인중개사 사무소입니다.<br/>
+    그 중 신축빌라 분양이 전문입니다.
+  </p>
+
+  <div class="exp-grid rv mt4">
+    <div class="exp-box accent">
+      <div class="exp-icon">🗺️</div>
+      <div class="exp-title">부동산 전체 흐름을<br/>압니다</div>
+      <div class="exp-desc">분양만 하는 곳은 대출·권리·시세를 모릅니다. 저희는 압니다.</div>
+    </div>
+    <div class="exp-box">
+      <div class="exp-icon">⚖️</div>
+      <div class="exp-title">법무팀과<br/>함께합니다</div>
+      <div class="exp-desc">등기·권리관계·감정평가 계약 전에 사전 확인합니다.</div>
+    </div>
+    <div class="exp-box">
+      <div class="exp-icon">🤝</div>
+      <div class="exp-title">15년 이상<br/>쌓인 인맥</div>
+      <div class="exp-desc">시행사·법무사·은행 라인을 직접 보유합니다.</div>
+    </div>
+    <div class="exp-box accent">
+      <div class="exp-icon">📣</div>
+      <div class="exp-title">광고보다<br/>소개가 더 많습니다</div>
+      <div class="exp-desc">거래 후 재소개가 이어지는 이유가 신뢰입니다.</div>
+    </div>
+  </div>
+
+  <div class="rv mt16" style="padding:16px;background:rgba(255,214,0,.1);border:1px solid rgba(255,214,0,.3);border-radius:12px;">
+    <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;">
+      타 분양사가 건물 이름을 공개하지 않는 이유는 단 하나입니다.<br/>
+      <b style="color:var(--yellow);">광고비를 받기 때문입니다.</b><br/>
+      저희는 건축주와 직접 업무협약을 맺어 수수료를 따로 받지 않습니다.<br/>
+      그래서 건물명을 공개할 수 있고, 고객님이 직접 비교할 수 있습니다.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════
+  ⑥ VS 비교
+════════════════════════════ -->
+<section class="sec">
+
+  <div class="t-lbl rv">COMPARISON</div>
+  <h2 class="rv">
+    직접 비교해보세요.<br/>
+    <span class="c-b">저희가 다른 6가지.</span>
+  </h2>
+  <p class="body rv mt8">
     저희가 더 비싸다면 안 오셔도 됩니다.<br/>
     <b>숨기는 것 없이 모두 보여드립니다.</b>
   </p>
 
-  <div class="vs-wrap rv mt24">
-    <div class="vs-header">
-      <div class="vs-head-cell cat" style="color:rgba(255,255,255,.45);padding-left:14px;">항목</div>
-      <div class="vs-head-cell">일반 부동산</div>
-      <div class="vs-head-cell ours">🐬 돌고래</div>
+  <div class="vs rv mt20">
+    <div class="vs-hd">
+      <div class="vs-hd-c cat">항목</div>
+      <div class="vs-hd-c">일반 분양사</div>
+      <div class="vs-hd-c ours">🐬 돌고래</div>
     </div>
     <div class="vs-row">
-      <div class="vs-cell cat">건물명 공개</div>
-      <div class="vs-cell"><span class="no">❌ 비공개</span></div>
-      <div class="vs-cell ours">✅ 실명 공개</div>
+      <div class="vs-c cat">서비스 범위</div>
+      <div class="vs-c"><span class="no">분양만</span></div>
+      <div class="vs-c ours">부동산 全분야</div>
     </div>
     <div class="vs-row">
-      <div class="vs-cell cat">실거래가</div>
-      <div class="vs-cell"><span class="no">❌ 감춤</span></div>
-      <div class="vs-cell ours">✅ 투명 공개</div>
+      <div class="vs-c cat">건물명 공개</div>
+      <div class="vs-c"><span class="no">❌ 비공개</span></div>
+      <div class="vs-c ours">✅ 실명 공개</div>
     </div>
     <div class="vs-row">
-      <div class="vs-cell cat">중개수수료</div>
-      <div class="vs-cell"><span class="no">유료 청구</span></div>
-      <div class="vs-cell ours">✅ 무료</div>
+      <div class="vs-c cat">중개수수료</div>
+      <div class="vs-c"><span class="no">유료</span></div>
+      <div class="vs-c ours">✅ 무료</div>
     </div>
     <div class="vs-row">
-      <div class="vs-cell cat">대출 구조 설계</div>
-      <div class="vs-cell"><span class="no">❌ 없음</span></div>
-      <div class="vs-cell ours">✅ 포함</div>
+      <div class="vs-c cat">대출 구조 설계</div>
+      <div class="vs-c"><span class="no">❌ 없음</span></div>
+      <div class="vs-c ours">✅ 포함</div>
     </div>
     <div class="vs-row">
-      <div class="vs-cell cat">건축주 직거래</div>
-      <div class="vs-cell"><span class="no">❌ 불가</span></div>
-      <div class="vs-cell ours">✅ 업무협약</div>
+      <div class="vs-c cat">법무팀 동행</div>
+      <div class="vs-c"><span class="no">❌ 없음</span></div>
+      <div class="vs-c ours">✅ 계약 전 확인</div>
     </div>
     <div class="vs-row">
-      <div class="vs-cell cat">안되면 중단</div>
-      <div class="vs-cell"><span class="no">억지 진행</span></div>
-      <div class="vs-cell ours">✅ 즉시 종료</div>
+      <div class="vs-c cat">안되면 즉시 중단</div>
+      <div class="vs-c"><span class="no">계약 압박</span></div>
+      <div class="vs-c ours">✅ 즉시 종료</div>
     </div>
   </div>
 
-  <div class="warn-box rv mt20" style="background:var(--blue);">
+  <div class="warn-box rv mt16" style="background:var(--navy);">
     중개수수료 없음 = 같은 집, 더 저렴한 가격<br/>
-    <span style="font-size:12px;font-weight:400;opacity:.85;">건축주와의 업무협약으로 수수료가 발생하지 않습니다</span>
+    <span style="font-size:11px;font-weight:400;opacity:.85;">건축주와의 업무협약으로 수수료가 발생하지 않습니다</span>
   </div>
 
   <a class="btn btn-blue rv" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
-    다른 부동산과 비교 후 연락 주셔도 됩니다 →
+    다른 분양사와 비교 후 연락 주셔도 됩니다 →
   </a>
-  <p class="btn-note rv">안 되면 진행하지 않습니다</p>
+  <p class="btn-note rv">구조가 안 나오면 진행하지 않습니다</p>
 
 </section>
 
 
-<!-- ═══════════ ④ 오해 해소 ═══════════ -->
+<!-- ════════════════════════════
+  ⑦ 오해 해소
+════════════════════════════ -->
 <section class="sec sec-gray">
 
-  <div class="t-label rv">MISBELIEFS</div>
+  <div class="t-lbl rv">MISBELIEFS</div>
   <h2 class="rv">
     "저는 조건이<br/>
     안 될 것 같아서요..."
   </h2>
-  <p class="body rv mt12">대부분은 확인조차 안 해보신 겁니다.</p>
+  <p class="body rv mt8">대부분은 확인조차 안 해보신 겁니다.</p>
 
-  <div style="display:grid;gap:12px;margin-top:24px;">
-
-    <div class="rv" data-d="1" style="border-radius:13px;overflow:hidden;border:1px solid var(--border);">
-      <div style="display:flex;align-items:flex-start;gap:8px;padding:14px 16px;background:#ffe0db;border-bottom:1px solid var(--red-bd);font-size:15px;font-weight:900;color:var(--red);line-height:1.35;">
-        <span>✗</span> "현금이 없으면 안 되는 거 아닌가요?"
-      </div>
-      <div style="padding:14px 16px;background:#fff;font-size:14px;color:var(--sub);line-height:1.78;">
+  <div class="mt20">
+    <div class="mis-item rv" data-d="1">
+      <div class="mis-q"> ❌  "현금이 없으면 안 되는 거 아닌가요?"</div>
+      <div class="mis-a">
         현금이 없어서 끝나는 게 아닙니다.<br/>
-        <b>현금 없이 입주 가능한 구조가 나오는지, 확인조차 안 해보신 겁니다.</b>
+        <b>현금 없이 입주 가능한 구조가 나오는지, 확인조차 안 해보신 겁니다.</b><br/>
+        전액대출·무입주 구조로 입주한 사례가 실제로 있습니다.
       </div>
     </div>
-
-    <div class="rv" data-d="2" style="border-radius:13px;overflow:hidden;border:1px solid var(--border);">
-      <div style="display:flex;align-items:flex-start;gap:8px;padding:14px 16px;background:#ffe0db;border-bottom:1px solid var(--red-bd);font-size:15px;font-weight:900;color:var(--red);line-height:1.35;">
-        <span>✗</span> "기존 대출이 있어서 더 받기 어렵지 않나요?"
-      </div>
-      <div style="padding:14px 16px;background:#fff;font-size:14px;color:var(--sub);line-height:1.78;">
+    <div class="mis-item rv" data-d="2">
+      <div class="mis-q"> ❌  "기존 대출이 있어서 더 받기 어렵지 않나요?"</div>
+      <div class="mis-a">
         기존 대출 포함해서 검토해드립니다.<br/>
         <b>기대출이 있다고 무조건 안 되는 건 아닙니다.</b><br/>
-        안 된다면 이유를 설명해드리고 종료합니다.
+        은행 기준에 맞게 구조를 재정리해 1금융 중심으로 잡아드립니다.
       </div>
     </div>
-
-    <div class="rv" data-d="3" style="border-radius:13px;overflow:hidden;border:1px solid var(--border);">
-      <div style="display:flex;align-items:flex-start;gap:8px;padding:14px 16px;background:#ffe0db;border-bottom:1px solid var(--red-bd);font-size:15px;font-weight:900;color:var(--red);line-height:1.35;">
-        <span>✗</span> "상담하면 결국 계약 압박 받는 거 아닌가요?"
-      </div>
-      <div style="padding:14px 16px;background:#fff;font-size:14px;color:var(--sub);line-height:1.78;">
+    <div class="mis-item rv" data-d="3">
+      <div class="mis-q"> ❌  "상담하면 결국 계약 압박 받는 거 아닌가요?"</div>
+      <div class="mis-a">
         집부터 꺼내지 않습니다.<br/>
         <b>고객님 조건으로 구조가 나오는지가 먼저입니다.</b><br/>
         안 된다면 그 자리에서 종료합니다. 압박 없습니다.
       </div>
     </div>
-
+    <div class="mis-item rv">
+      <div class="mis-q"> ❌  "신축빌라는 위험하다고 들었어요"</div>
+      <div class="mis-a">
+        불안한 이유가 있습니다. 실제로 문제가 된 사례가 있기 때문입니다.<br/>
+        그래서 저희는 <b>법무팀과 함께 등기·권리관계·감정평가를 계약 전에 먼저 확인</b>합니다.<br/>
+        문제 될 수 있는 부분은 계약 전에 투명하게 설명드립니다.
+      </div>
+    </div>
   </div>
 
 </section>
 
 
-<!-- ═══════════ ⑤ USP – 투명성 ═══════════ -->
+<!-- ════════════════════════════
+  ⑧ 투명성 USP
+════════════════════════════ -->
 <section class="sec sec-black">
 
-  <div class="t-label y rv">TRANSPARENCY</div>
+  <div class="t-lbl y rv">TRANSPARENCY</div>
   <h2 class="rv c-w">
-    저희가 모든 걸
-    알려드리는 이유
+    저희가 모든 걸<br/>
+    <span style="color:var(--yellow);">알려드리는 이유</span>
   </h2>
-  <p class="body w rv mt12">
-    신뢰가 가장 강력한 영업이라고 믿기 때문입니다.
+  <p class="body w rv mt8">
+    신뢰가 가장 강력한 영업이라고 믿기 때문입니다.<br/>
+    고객 한 분 한 분을 가족이라 생각하고 책임집니다.
   </p>
 
   <div class="usp-items">
-
     <div class="usp-item rv" data-d="1">
-      <div class="usp-num">1</div>
+      <div class="usp-n">1</div>
       <div>
         <h3>건물 이름을 공개합니다</h3>
-        <p>다른 부동산은 광고비를 받아 감춥니다. 저희는 건축주와 업무협약으로 수수료 없이 실명 공개해드립니다.</p>
+        <p>타 분양사는 광고비를 받아 감춥니다. 저희는 건축주와 업무협약으로 수수료 없이 실명 공개해드립니다.</p>
       </div>
     </div>
-
     <div class="usp-item rv" data-d="2">
-      <div class="usp-num">2</div>
+      <div class="usp-n">2</div>
       <div>
-        <h3>실거래가 그대로 보여줍니다</h3>
-        <p>부풀리거나 숨기지 않습니다. 다른 부동산과 직접 비교해보세요. 저희가 더 저렴합니다.</p>
+        <h3>실거래가 그대로 보여드립니다</h3>
+        <p>부풀리거나 숨기지 않습니다. 다른 분양사와 직접 비교해보세요. 저희가 더 저렴합니다.</p>
       </div>
     </div>
-
     <div class="usp-item rv" data-d="3">
-      <div class="usp-num">3</div>
+      <div class="usp-n">3</div>
       <div>
         <h3>중개수수료가 없습니다</h3>
-        <p>건축주와의 업무협약으로 중개수수료를 받지 않습니다. 동일한 물건을 더 저렴하게 계약하실 수 있습니다.</p>
+        <p>건축주와의 업무협약 구조입니다. 고객님께 수수료를 청구할 이유가 없습니다. 상담부터 진행까지 전 과정 무료입니다.</p>
       </div>
     </div>
-
     <div class="usp-item rv">
-      <div class="usp-num">4</div>
+      <div class="usp-n">4</div>
       <div>
-        <h3>안 되면 먼저 말합니다</h3>
-        <p>희망고문 없습니다. 안 된다면 이유를 명확히 설명드리고 종료합니다.</p>
+        <h3>안 되면 먼저 말씀드립니다</h3>
+        <p>희망고문 없습니다. 안 된다면 이유를 명확히 설명드리고 종료합니다. 근거 없는 희망은 드리지 않습니다.</p>
       </div>
     </div>
-
   </div>
 
   <div class="usp-punch rv mt20">
     비교해보시고 오세요.<br/>
-    <span style="font-size:14px;font-weight:400;">저희가 더 비싸다면 안 오셔도 됩니다.</span>
+    <span style="font-size:13px;font-weight:500;">저희가 더 비싸다면 안 오셔도 됩니다.</span>
   </div>
 
 </section>
 
 
-<!-- ═══════════ ⑥ HOW IT WORKS ═══════════ -->
+<!-- ════════════════════════════
+  ⑨ 프로세스
+════════════════════════════ -->
 <section class="sec">
 
-  <div class="t-label rv">HOW IT WORKS</div>
+  <div class="t-lbl rv">HOW IT WORKS</div>
   <h2 class="rv">
-    4단계로<br/>
-    <span class="c-b">끝납니다.</span>
+    4단계로 끝납니다.<br/>
+    <span class="c-b">희망적인 말 대신 숫자로.</span>
   </h2>
-  <p class="body rv mt12">
-    희망적인 말 대신,<br/>
-    <b>단계별로 숫자로만 보여드립니다.</b>
-  </p>
+  <p class="body rv mt8">가능하면 진행하고, 안 되면 즉시 종료합니다.</p>
 
-  <div style="display:grid;gap:10px;margin-top:24px;">
-
-    <div class="rv" data-d="1" style="display:flex;gap:14px;align-items:flex-start;padding:17px 16px;background:#fff;border:1px solid var(--border);border-radius:13px;">
-      <div style="width:36px;height:36px;flex:0 0 auto;background:var(--black);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:16px;">1</div>
-      <div>
+  <div class="proc-items mt20">
+    <div class="proc-item rv" data-d="1">
+      <div class="proc-left">
+        <div class="proc-num">1</div>
+        <div class="proc-line"></div>
+      </div>
+      <div class="proc-body">
         <h3>현재 상태 확인</h3>
-        <p class="body">소득 / 고정지출 / 기대출 / 신용 / 가족구성 / 희망 지역</p>
+        <p>소득·고정지출·기대출·신용등급·가족구성·희망 지역을 파악합니다.</p>
+        <span class="proc-tag">무료 · 부담 없음</span>
       </div>
     </div>
-
-    <div class="rv" data-d="2" style="display:flex;gap:14px;align-items:flex-start;padding:17px 16px;background:#fff;border:1px solid var(--border);border-radius:13px;">
-      <div style="width:36px;height:36px;flex:0 0 auto;background:var(--black);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:16px;">2</div>
-      <div>
-        <h3>1금융 기준으로 한도 확정</h3>
-        <p class="body">가능한 한도·금리·월 납부액 범위를 잡습니다.</p>
+    <div class="proc-item rv" data-d="2">
+      <div class="proc-left">
+        <div class="proc-num">2</div>
+        <div class="proc-line"></div>
+      </div>
+      <div class="proc-body">
+        <h3>1금융 기준 한도 확정</h3>
+        <p>가능한 한도·금리·월 납부액 범위를 숫자로 확인합니다.</p>
+        <span class="proc-tag">안 되면 여기서 종료</span>
       </div>
     </div>
-
-    <div class="rv" data-d="3" style="display:flex;gap:14px;align-items:flex-start;padding:17px 16px;background:#fff;border:1px solid var(--border);border-radius:13px;">
-      <div style="width:36px;height:36px;flex:0 0 auto;background:var(--black);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:16px;">3</div>
-      <div>
+    <div class="proc-item rv" data-d="3">
+      <div class="proc-left">
+        <div class="proc-num done">3</div>
+        <div class="proc-line"></div>
+      </div>
+      <div class="proc-body">
         <h3>초기자금 0원 시나리오 구성</h3>
-        <p class="body">"가진 돈" 기준이 아니라 "낼 수 있는 월 비용" 기준으로 설계합니다.</p>
+        <p>"가진 돈"이 아니라 "낼 수 있는 월 비용" 기준으로 구조를 설계합니다.</p>
+        <span class="proc-tag">생활자금 포함 설계 가능</span>
       </div>
     </div>
-
-    <div class="rv" style="display:flex;gap:14px;align-items:flex-start;padding:17px 16px;background:#fff;border:1px solid var(--border);border-radius:13px;">
-      <div style="width:36px;height:36px;flex:0 0 auto;background:var(--black);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:16px;">4</div>
-      <div>
-        <h3>안 되면 중단 / 되면 실행</h3>
-        <p class="body">가능한 경우만 다음 단계로 넘어갑니다.</p>
+    <div class="proc-item rv">
+      <div class="proc-left">
+        <div class="proc-num done">4</div>
+        <div class="proc-line"></div>
+      </div>
+      <div class="proc-body">
+        <h3>법무팀 동행 · 계약 실행</h3>
+        <p>등기·권리관계·감정평가를 사전 확인 후 안전하게 계약합니다.</p>
+        <span class="proc-tag">법무팀 연계 · 계약 보호</span>
       </div>
     </div>
-
   </div>
 
-  <div class="mt24 rv">
+  <div class="mt20 rv">
     <a class="btn btn-black" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
-      저의 조건으로 4단계 무료 진행받기 →
+      고객님 조건으로 STEP 1 무료 시작 →
     </a>
     <p class="btn-note">구조가 안 나오면 진행하지 않습니다</p>
   </div>
@@ -879,224 +973,226 @@ input[type=range]::-webkit-slider-thumb{
 </section>
 
 
-<!-- ═══════════ ⑦ 실제 사례 ═══════════ -->
+<!-- ════════════════════════════
+  ⑩ 실사례
+════════════════════════════ -->
 <section class="sec sec-gray">
 
-  <div class="t-label rv">REAL CASES</div>
+  <div class="t-lbl rv">REAL CASES</div>
   <h2 class="rv">
     실제 건물 이름과<br/>
-    <span class="c-b">가격 공개합니다.</span>
+    <span class="c-b">가격을 공개합니다.</span>
   </h2>
-  <p class="body rv mt12">
-    다른 부동산은 이걸 보여주지 않습니다.<br/>
+  <p class="body rv mt8">
+    타 분양사는 이걸 보여주지 않습니다.<br/>
     <b>광고비를 받는 구조이기 때문입니다.</b>
   </p>
 
-  <div class="case-items">
-
+  <div class="case-items mt20">
     <div class="case-item rv" data-d="1">
       <div class="case-tag">✅ 실거래 사례 · 계약 완료</div>
-      <!-- 사진 슬롯 -->
-      <div style="background:#eaecf0;border-bottom:1px solid var(--border);height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-        <span style="font-size:32px;">📷</span>
-        <span style="font-size:11px;font-weight:700;color:#aaa;letter-spacing:.5px;">건물 사진 삽입</span>
+      <!--
+        ★ 사진 교체:
+        아래 div.case-photo 내용을 <img src="파일명.jpg"> 로 교체
+      -->
+      <div class="case-photo">
+        <span style="font-size:38px;">📷</span>
+        <span class="case-photo-lbl">건물 사진 삽입</span>
       </div>
       <div class="case-body">
-        <div class="case-building">○○ 빌라 (OO구 OO동)</div>
+        <div class="case-bldg">○○ 신축빌라 (OO구 OO동)</div>
         <div class="case-price">월 <span>대출 상환</span> 68만원</div>
         <div class="case-desc">
           기존 월세 82만원 → 내 집 월 납부 68만원<br/>
-          초기자금 0원, 신용 4등급, 직장인 기준
+          초기자금 0원 · 신용 4등급 · 직장인 기준
         </div>
-        <div class="case-diff">다른 곳보다 수수료 절감: 약 200만원</div>
+        <div class="case-diff">타 분양사 대비 수수료 절감: 약 200만원</div>
       </div>
     </div>
-
     <div class="case-item rv" data-d="2">
       <div class="case-tag">✅ 실거래 사례 · 계약 완료</div>
-      <!-- 사진 슬롯 -->
-      <div style="background:#eaecf0;border-bottom:1px solid var(--border);height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-        <span style="font-size:32px;">📷</span>
-        <span style="font-size:11px;font-weight:700;color:#aaa;letter-spacing:.5px;">건물 사진 삽입</span>
+      <div class="case-photo">
+        <span style="font-size:38px;">📷</span>
+        <span class="case-photo-lbl">건물 사진 삽입</span>
       </div>
       <div class="case-body">
-        <div class="case-building">△△ 신축 빌라 (OO구 OO동)</div>
+        <div class="case-bldg">△△ 신축빌라 (OO구 OO동)</div>
         <div class="case-price">월 <span>대출 상환</span> 74만원</div>
         <div class="case-desc">
           기존 월세 90만원 → 내 집 월 납부 74만원<br/>
-          자영업자, 기대출 있음, 전세 포기 경험
+          자영업자 · 기대출 있음 · 전세 포기 경험
         </div>
-        <div class="case-diff">수수료 0원 · 건축주 직거래</div>
+        <div class="case-diff">수수료 0원 · 건축주 직거래 · 법무팀 확인 완료</div>
       </div>
     </div>
-
   </div>
 
-  <div style="margin-top:16px;padding:14px 16px;background:#fff;border:1.5px dashed var(--blue);border-radius:10px;font-size:13px;color:var(--blue);font-weight:700;line-height:1.65;" class="rv">
+  <div class="rv mt16" style="padding:14px 15px;background:#fff;border:1.5px dashed var(--blue);border-radius:10px;font-size:12px;color:var(--blue);font-weight:700;line-height:1.7;">
     상담 시 실제 건물명과 실거래가를 공개해드립니다.<br/>
-    다른 부동산에서 먼저 알아보시고 비교해보세요.
+    다른 분양사에서 먼저 알아보시고 비교해보세요.
   </div>
 
 </section>
 
 
-<!-- ═══════════ ⑧ 후기 ═══════════ -->
+<!-- ════════════════════════════
+  ⑪ 후기
+════════════════════════════ -->
 <section class="sec">
 
-  <div class="t-label rv">REVIEWS</div>
+  <div class="t-lbl rv">REVIEWS</div>
   <h2 class="rv">
-    칭찬보다
+    칭찬보다<br/>
     실제 상황으로 판단하세요.
   </h2>
 
-  <div class="review-items mt24">
-
-    <div class="review-item rv" data-d="1">
+  <div class="rev-items mt20">
+    <div class="rev-item rv" data-d="1">
       <div class="rev-q">"</div>
       <div class="rev-txt">
-        다른 부동산 세 곳 갔는데 건물 이름도 안 알려주더라고요.<br/>
+        다른 분양사 세 곳 갔는데 건물 이름도 안 알려주더라고요.<br/>
         여기는 처음부터 다 보여줘서 오히려 더 믿음이 갔어요.
       </div>
       <div class="rev-who">월세 85만원 · 외벌이 가장 · 기대출 있음</div>
     </div>
-
-    <div class="review-item rv" data-d="2">
+    <div class="rev-item rv" data-d="2">
       <div class="rev-q">"</div>
       <div class="rev-txt">
         처음엔 반신반의했는데 수수료가 정말 없었어요.<br/>
-        같은 건물을 다른 부동산에서도 알아봤는데<br/>
-        거기선 수수료 200만원을 요구하더라고요.
+        같은 건물 다른 데서 알아보니 거기선 200만원 요구하더라고요.<br/>
+        비교하길 잘했습니다.
       </div>
       <div class="rev-who">월세 78만원 · 직장인 · 신용 4등급</div>
     </div>
-
-    <div class="review-item rv" data-d="3">
+    <div class="rev-item rv" data-d="3">
       <div class="rev-q">"</div>
       <div class="rev-txt">
         안 된다고 바로 말씀해주셨어요.<br/>
-        이유도 설명해주시고, 시간 낭비가 없었습니다.<br/>
+        이유도 설명해주시고 시간 낭비가 없었습니다.<br/>
         오히려 그래서 나중에 다시 연락드렸어요.
       </div>
       <div class="rev-who">월세 92만원 · 자영업자 · 전세 포기 경험</div>
     </div>
-
+    <div class="rev-item rv">
+      <div class="rev-q">"</div>
+      <div class="rev-txt">
+        신축빌라가 무섭다는 생각이 있었는데<br/>
+        계약 전에 법무팀에서 서류를 먼저 검토해줬어요.<br/>
+        그제서야 안심이 됐습니다.
+      </div>
+      <div class="rev-who">30대 부부 · 첫 내집마련 · 전세 퇴거 직전</div>
+    </div>
   </div>
 
 </section>
 
 
-<!-- ═══════════ ⑨ FAQ ═══════════ -->
+<!-- ════════════════════════════
+  ⑫ FAQ
+════════════════════════════ -->
 <section class="sec sec-gray">
 
-  <div class="t-label rv">FAQ</div>
+  <div class="t-lbl rv">FAQ</div>
   <h2 class="rv">상담 전에<br/>자주 물어보시는 것들</h2>
 
-  <div class="faq-list mt24">
-
+  <div class="faq-list mt20">
     <details class="rv" data-d="1" open>
-      <summary>
-        왜 수수료를 안 받나요?
-        <span class="fq-arr">▾</span>
-      </summary>
+      <summary>왜 수수료를 안 받나요? <span class="fq-arr">▾</span></summary>
       <div class="fq-body">
-        <b>건축주와의 업무협약</b>을 통해 진행합니다.<br/>
-        건축주와 직접 협약을 맺은 구조이기 때문에<br/>
-        고객님께 별도 수수료를 청구하지 않습니다.
+        <b>건축주와의 업무협약</b> 구조로 운영됩니다.<br/>
+        시행사로부터 정식 수수료를 받기 때문에 고객님께 별도 비용을 청구하지 않습니다.<br/>
+        상담·대출 설계·매물 선정·진행까지 전 과정이 무료입니다.
       </div>
     </details>
-
     <details class="rv" data-d="2">
-      <summary>
-        정말 건물 이름을 알려주나요?
-        <span class="fq-arr">▾</span>
-      </summary>
+      <summary>진짜 건물 이름을 알려주나요? <span class="fq-arr">▾</span></summary>
       <div class="fq-body">
         <b>네, 상담 시 실제 건물명과 실거래가를 공개해드립니다.</b><br/>
-        다른 부동산에서 동일 건물을 먼저 알아보시고 비교해보세요.<br/>
-        비교 후 연락 주셔도 됩니다.
+        다른 분양사에서 동일 건물을 먼저 확인해보시고 비교해보세요.
       </div>
     </details>
-
     <details class="rv" data-d="3">
-      <summary>
-        현금이 없어도 상담 가능한가요?
-        <span class="fq-arr">▾</span>
-      </summary>
+      <summary>현금이 없어도 상담 가능한가요? <span class="fq-arr">▾</span></summary>
       <div class="fq-body">
         네, <b>초기자금 0원 기준으로 먼저 계산해드립니다.</b><br/>
-        가능한지 불가능한지부터 정리해드립니다.<br/>
         현금이 없다는 이유로 상담을 거절하지 않습니다.
       </div>
     </details>
-
     <details class="rv">
-      <summary>
-        대출이 이미 있는데도 되나요?
-        <span class="fq-arr">▾</span>
-      </summary>
+      <summary>기존 대출이 있어도 되나요? <span class="fq-arr">▾</span></summary>
       <div class="fq-body">
-        기대출 포함해서 봅니다.<br/>
-        <b>가능하면 다음 단계로, 안 되면 이유 설명 후 중단합니다.</b><br/>
-        기대출이 있다고 무조건 안 되는 건 아닙니다.
+        기존 대출 포함해서 검토해드립니다.<br/>
+        <b>기대출이 있다고 무조건 안 되는 건 아닙니다.</b><br/>
+        은행 기준에 맞게 구조를 재정리하여 1금융 중심으로 잡아드립니다.
       </div>
     </details>
-
     <details class="rv">
-      <summary>
-        무조건 진행하라고 하진 않나요?
-        <span class="fq-arr">▾</span>
-      </summary>
+      <summary>신축빌라가 불안한데 괜찮은가요? <span class="fq-arr">▾</span></summary>
+      <div class="fq-body">
+        불안한 이유가 있습니다. 실제로 문제가 된 사례가 있기 때문입니다.<br/>
+        저희는 <b>법무팀과 함께 등기·권리관계·감정평가를 계약 전에 사전 확인</b>합니다.<br/>
+        문제 될 수 있는 부분은 계약 전에 투명하게 설명드립니다.
+      </div>
+    </details>
+    <details class="rv">
+      <summary>무조건 진행하라고 하진 않나요? <span class="fq-arr">▾</span></summary>
       <div class="fq-body">
         <b>안 된다면 진행하지 않습니다.</b><br/>
         구조가 안 나오면 이유를 설명드리고 종료합니다.<br/>
-        근거 없는 희망을 드리는 방식은 저희 방식이 아닙니다.
+        근거 없는 희망은 저희 방식이 아닙니다.
       </div>
     </details>
-
   </div>
 
 </section>
 
 
-<!-- ═══════════ ⑩ FINAL CTA ═══════════ -->
+<!-- ════════════════════════════
+  ⑬ FINAL CTA
+════════════════════════════ -->
 <section class="final" id="finalCta">
 
-  <div class="t-label y rv">마지막으로</div>
-  <h2 class="rv" style="color:#fff;margin-bottom:12px;font-family:var(--body);font-weight:800;line-height:1.45;font-size:26px;letter-spacing:-0.3px;">
-    월세는 매달 나가지만<br/>
-    내 집은 매달<br/>
-    <span class="c-y">자산이 됩니다.</span>
-  </h2>
+  <div class="t-lbl y rv">마지막으로</div>
+  <div class="final-headline rv">
+    고객님은 지금<br/>
+    집을 사는 게 아닙니다.<br/>
+    <em>불안에서 벗어나는<br/>선택을 하는 겁니다.</em>
+  </div>
 
-  <p class="final-body rv">
-    건물명, 실거래가, 수수료 모두 공개해드립니다.<br/>
-    <b>다른 부동산과 직접 비교해보세요.</b><br/>
+  <p class="final-body rv mt12">
+    월세는 매달 나가지만 내 집은 매달 자산이 됩니다.<br/>
+    <b>안전하게, 무리 없이, 현재 조건에서 가능한 방법.</b><br/>
+    그것만 찾아드립니다.<br/><br/>
+    건물명·실거래가·수수료 모두 공개합니다.<br/>
+    <b>다른 분양사와 직접 비교해보세요.</b><br/>
     오늘 결정하실 필요 없습니다.<br/>
-    <b>지금 조건으로 가능한지만 먼저 확인해보세요.</b>
+    지금 조건으로 <b>가능한지만 먼저 확인해보세요.</b>
   </p>
 
   <a class="final-btn rv" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
-    내 상황으로 가능 여부 무료 확인받기 →
+    지금 조건으로 가능 여부 무료 확인받기 →
   </a>
 
   <div class="final-micro rv">
     <span>🏢 건물명 공개</span>
     <span class="fm-dot"></span>
-    <span>💰 수수료 없음</span>
+    <span>💰 수수료 0원</span>
     <span class="fm-dot"></span>
-    <span>✕ 안 되면 종료</span>
+    <span>⚖️ 법무팀 동행</span>
+    <span class="fm-dot"></span>
+    <span>✕ 압박 없음</span>
   </div>
 
-  <div class="final-disclaimer rv">
+  <div class="final-disc rv">
     ※ 건축주와의 업무협약 기반으로 진행되며, 실제 금리·한도·승인 여부는 개인 조건 및 금융기관 심사 기준에 따라 달라질 수 있습니다. 본 안내는 구조 확인을 위한 사전 상담이며, 금융상품 승인을 보장하지 않습니다.
   </div>
 
 </section>
 
-<!-- FOOTER -->
 <div class="footer">
-  <b>돌고래하우스</b><br/>
-  본 페이지는 내 집 마련 구조 설계 가능 여부 확인을 위한 안내입니다.<br/>
+  <b>돌고래하우스</b> · 공인중개사 사무소<br/>
+  부동산 매매·전세·월세·분양·토지·상가 전 분야 취급<br/>
+  본 페이지는 내집마련 구조 설계 가능 여부 확인을 위한 안내입니다.<br/>
   대출 승인·금리·조건은 개인 상황 및 금융기관 심사 기준에 따라 달라질 수 있습니다.
 </div>
 
@@ -1104,43 +1200,33 @@ input[type=range]::-webkit-slider-thumb{
 <div class="sticky" id="stickyBar">
   <div class="sticky-inner">
     <div class="sticky-copy">
-      <b>수수료 없이 내 집 마련</b>
-      <small>건물명·가격 공개 · 안 되면 즉시 종료</small>
+      <b>돌고래하우스 내집마련 컨설팅</b>
+      <small>건물명·가격 공개 · 수수료 없음 · 안 되면 즉시 종료</small>
     </div>
-    <a class="sticky-link" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">
-      무료 확인 →
-    </a>
+    <a class="sticky-link" href="https://talk.naver.com/profile/w9250ia/form/1" target="_blank">무료 확인 →</a>
   </div>
 </div>
 
-</div>
+</div><!-- /page -->
 
 <script>
 /* ── 슬라이더 ── */
 const sl=document.getElementById('sl');
-const rentD=document.getElementById('rentD');
-const slLbl=document.getElementById('slLbl');
-const yr1D=document.getElementById('yr1D');
-const yr5D=document.getElementById('yr5D');
-const p1D=document.getElementById('p1D');
-const p3D=document.getElementById('p3D');
-const p5D=document.getElementById('p5D');
 const f=n=>n.toLocaleString('ko-KR');
 function calc(){
   const r=parseInt(sl.value);
   const mth=r+10;
-  const y1=mth*12;
-  const y3=mth*36;
-  const y5=mth*60+40;
-  rentD.textContent=r;
-  slLbl.textContent=r;
-  yr1D.textContent=f(y1);
-  yr5D.textContent=f(y5);
-  p1D.textContent=f(y1);
-  p3D.textContent=f(y3);
-  p5D.textContent=f(y5);
-  const pct=((r-70)/50)*100;
-  sl.style.setProperty('--pct',pct+'%');
+  const y1=mth*12, y3=mth*36, y5=mth*60+40;
+  document.getElementById('rentD').textContent=r;
+  document.getElementById('slLbl').textContent=r;
+  document.getElementById('yr1D').textContent=f(y1);
+  document.getElementById('yr5D').textContent=f(y5);
+  if(document.getElementById('p1D')){
+    document.getElementById('p1D').textContent=f(y1);
+    document.getElementById('p3D').textContent=f(y3);
+    document.getElementById('p5D').textContent=f(y5);
+  }
+  sl.style.setProperty('--pct',((r-70)/50*100)+'%');
 }
 sl.addEventListener('input',calc);
 calc();
